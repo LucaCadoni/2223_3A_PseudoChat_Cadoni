@@ -49,7 +49,7 @@ function lista(){
     }
 
     lista.innerHTML = li;
-    msg(1);
+    selUtente(1);
 }
 
 function selUtente(i){
@@ -88,7 +88,7 @@ function msg(ut){
     let section = document.querySelector("section > section");
     section.innerHTML = "";
 
-    for(let i in mittenti){
+    for(let i in destinatari){
         
         if(mittenti[i] == ut){
             let msg = document.createElement("article");
@@ -107,24 +107,15 @@ function msg(ut){
         }
         
     }
-
-    for(let j=0; j<posMIei.length; j++){
-        if(posMIei[j] == ut){
-            let msg = document.createElement("article");
-            msg.innerHTML = msgMiei[j];
-            msg.classList.add("ut2");
-            msg.classList.add("mes");
-            section.appendChild(msg);
-        }
-    }
 }
 
 
 function scrivi(i){
     let input = document.getElementById("txt");
 
-    msgMiei[msgMiei.length] = input.value;
-    posMIei[posMIei.length] = i;
+    messaggi[messaggi.length] = input.value;
+    destinatari[destinatari.length] = i;
+    console.log(i);
 
     msg(i);
 }
