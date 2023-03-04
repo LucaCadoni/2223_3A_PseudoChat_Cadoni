@@ -68,8 +68,21 @@ function selUtente(i){
     nome.innerText = nomeUtenti[i] +" "+cognomeUtenti[i];
     ora.innerText = orari[i];
 
+    let input = document.getElementById("divAddMes");
+    let val = `
+        <input type="text" id="txt">
+        <button onclick="scrivi(`+ i +`)">
+            <span class="material-symbols-outlined icone">
+                send
+            </span>
+        </button>
+    `;
+
+    input.innerHTML = val;
+
     msg(i);
 }
+
 
 function msg(ut){
     let section = document.querySelector("section > section");
@@ -94,4 +107,24 @@ function msg(ut){
         }
         
     }
+
+    for(let j=0; j<posMIei.length; j++){
+        if(posMIei[j] == ut){
+            let msg = document.createElement("article");
+            msg.innerHTML = msgMiei[j];
+            msg.classList.add("ut2");
+            msg.classList.add("mes");
+            section.appendChild(msg);
+        }
+    }
+}
+
+
+function scrivi(i){
+    let input = document.getElementById("txt");
+
+    msgMiei[msgMiei.length] = input.value;
+    posMIei[posMIei.length] = i;
+
+    msg(i);
 }

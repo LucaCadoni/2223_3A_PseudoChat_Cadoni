@@ -117,3 +117,10 @@ var orari = [
     "Ieri alle 12:01",
     "Ieri alle 8:30",
 ]
+
+var msgMiei = [
+
+];
+
+
+var posMIei = [];
