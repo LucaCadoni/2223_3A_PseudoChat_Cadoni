@@ -20,3 +20,54 @@
         #se il campo di testo non è vuoto aggiungere il messaggio in coda agli altri del personaggio selezionato
 
 */
+
+function lista(){
+    let li = ``;
+    let lista = document.getElementById("listUtenti");
+
+    for(let i=1; i<nomeUtenti.length; i++){
+        li += `<li onclick="selUtente(`+ i +`), messaggi(`+ i +`)">`
+        if(genereUt[i] == "m")
+        {
+            li += `
+            <div class="material-symbols-outlined icone">
+                face
+            </div>
+            `;
+        }
+        else
+        {
+            li += `
+            <div class="material-symbols-outlined icone">
+                face_3
+            </div>
+            `;
+        }
+        let x = cognomeUtenti[i];
+        li += nomeUtenti[i] + ` ` + x[0] + `.`; 
+    }
+
+    lista.innerHTML = li;
+}
+
+function selUtente(i){
+    let nome = document.getElementById("divNome");
+    let profilo = document.querySelector("header > div:first-child");
+
+    if(genereUt[i] == "m"){
+        profilo.innerText = "face";
+    }
+    else
+    {
+        profilo.innerText = "face_3";
+    }
+
+    nome.innerText = nomeUtenti[i] +" "+cognomeUtenti[i];
+}
+
+
+function messaggi(i){
+    for(let i in mittenti){
+        let msg = document.createElement("article");
+    }
+}
