@@ -108,3 +108,12 @@ var genereUt = [
     "f",
     "m"
 ];
+
+var orari = [
+    "00:00",
+    "Oggi alle 10:30",
+    "Ieri alle 22:25",
+    "Ieri alle 15:10",
+    "Ieri alle 12:01",
+    "Ieri alle 8:30",
+]

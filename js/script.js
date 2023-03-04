@@ -26,7 +26,7 @@ function lista(){
     let lista = document.getElementById("listUtenti");
 
     for(let i=1; i<nomeUtenti.length; i++){
-        li += `<li onclick="selUtente(`+ i +`), messaggi(`+ i +`)">`
+        li += `<li onclick="selUtente(`+ i +`)">`
         if(genereUt[i] == "m")
         {
             li += `
@@ -45,14 +45,17 @@ function lista(){
         }
         let x = cognomeUtenti[i];
         li += nomeUtenti[i] + ` ` + x[0] + `.`; 
+        
     }
 
     lista.innerHTML = li;
+    msg(1);
 }
 
 function selUtente(i){
     let nome = document.getElementById("divNome");
     let profilo = document.querySelector("header > div:first-child");
+    let ora = document.getElementById("divUltimoMes");
 
     if(genereUt[i] == "m"){
         profilo.innerText = "face";
@@ -63,11 +66,32 @@ function selUtente(i){
     }
 
     nome.innerText = nomeUtenti[i] +" "+cognomeUtenti[i];
+    ora.innerText = orari[i];
+
+    msg(i);
 }
 
+function msg(ut){
+    let section = document.querySelector("section > section");
+    section.innerHTML = "";
 
-function messaggi(i){
     for(let i in mittenti){
-        let msg = document.createElement("article");
+        
+        if(mittenti[i] == ut){
+            let msg = document.createElement("article");
+            msg.innerHTML = messaggi[i];
+            msg.classList.add("ut1");
+            msg.classList.add("mes");
+            section.appendChild(msg);
+        }
+        else if(destinatari[i] == ut)
+        {
+            let msg = document.createElement("article");
+            msg.innerHTML = messaggi[i];
+            msg.classList.add("ut2");
+            msg.classList.add("mes");
+            section.appendChild(msg);
+        }
+        
     }
 }
